@@ -2,94 +2,103 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+<p align="center">API RESTful construite avec <a href="http://nodejs.org" target="_blank">Node.js</a>, NestJS, Prisma et MongoDB pour gérer des ressources éducatives.</p>
 
 ## Description
-Ce projet est une API RESTful construite avec **NestJS**, **Prisma** et **MongoDB**. Il permet de gérer des ressources de manière efficace tout en intégrant des tests unitaires pour garantir la qualité du code.
 
+Ce projet est une API RESTful développée avec **NestJS**, **Prisma** et **MongoDB**. Elle permet de gérer des cours éducatifs, incluant la création, la mise à jour, la suppression et la récupération de cours. Le projet inclut des pratiques de sécurité et des tests unitaires pour garantir la qualité et la robustesse du code.
 
 ## Technologies Utilisées
 
-- **NestJS** : Framework Node.js pour construire des applications côté serveur.
-- **Prisma** : ORM moderne qui facilite les interactions avec MongoDB.
-- **MongoDB** : Base de données NoSQL pour stocker les données.
- 
+- **NestJS** : Framework Node.js orienté sur la modularité et la scalabilité.
+- **Prisma** : ORM moderne pour interagir avec MongoDB.
+- **MongoDB** : Base de données NoSQL pour stocker les données des cours.
 
-## Configuration de la base de données
-Avant de démarrer le projet, vous devez configurer la connexion à MongoDB. Modifiez le fichier ```env``` pour inclure vos informations de connexion:
+## Configuration de la Base de Données
 
-```bash
-DATABASE_URL="mongodb://<username>:<password>@localhost:27017/<dbname>"
-```
+1. **Paramétrer l'URL de la base de données** : 
+   - Dans le fichier `.env`, configurez l'URL de connexion MongoDB.
+   
+   Exemple :
+   ```bash
+   DATABASE_URL="mongodb://<username>:<password>@localhost:27017/<dbname>"
+   ```
+   Remplacez `<username>`, `<password>`, et `<dbname>` par vos informations MongoDB.
 
-## Project setup
+2. **Synchroniser Prisma avec MongoDB** :
+   - Après avoir configuré `.env`, exécutez les commandes suivantes pour générer le client Prisma et synchroniser la base de données :
 
-```bash
-$ npm install
-```
+   ```bash
+   npx prisma generate
+   npx prisma db push
+   ```
 
-## Compile and run the project
+## Installation du Projet
 
-```bash
-# development
-$ npm run start
+1. **Cloner le dépôt** :
+   ```bash
+   git clone <URL_DU_DEPOT>
+   cd backend-test
+   ```
 
-# watch mode
-$ npm run start:dev
+2. **Installer les dépendances** :
+   ```bash
+   npm install
+   ```
 
-# production mode
-$ npm run start:prod
-```
+3. **Compiler et Lancer le Projet** :
 
+   - En mode développement :
+     ```bash
+     npm run start:dev
+     ```
 
-```bash
-$ npm install
-```
+   - En mode production :
+     ```bash
+     npm run start:prod
+     ```
 
-## API Documentation
-L'API est documentée à l'aide de Swagger. Vous pouvez y accéder à l'adresse suivante :
+## Documentation de l'API
+
+L'API est documentée avec **Swagger**. Une fois le serveur lancé, accédez à la documentation complète à :
 ```bash
 http://localhost:3000/api
-
 ```
 
-## Run tests
+## Exécution des Tests
 
-```bash
-# unit tests
-$ npm run test
+Des tests unitaires et de couverture sont fournis pour valider les fonctionnalités de l'API.
 
-# e2e tests
-$ npm run test:e2e
+- **Tests unitaires** :
+   ```bash
+   npm run test
+   ```
 
-# test coverage
-$ npm run test:cov
-```
+- **Tests end-to-end** :
+   ```bash
+   npm run test:e2e
+   ```
+
+- **Couverture des tests** :
+   ```bash
+   npm run test:cov
+   ```
+
+## Structure des Endpoints
+
+- `POST /courses` : Créer un nouveau cours
+- `GET /courses` : Récupérer la liste de tous les cours
+- `GET /courses/{id}` : Récupérer un cours par ID
+- `PUT /courses/{id}` : Mettre à jour un cours
+- `DELETE /courses/{id}` : Supprimer un cours par ID
 
 ## Choix Techniques
 
-- **NestJS** : Choisi pour sa structure modulaire et sa facilité d'utilisation avec TypeScript.
-- **Prisma** : Utilisé pour interagir efficacement avec MongoDB, offrant une API intuitive et des outils de migration.
-- **MongoDB** : Sélectionné pour sa flexibilité dans le stockage de données non structurées et sa scalabilité.
+- **NestJS** : Choisi pour sa structure modulaire, son intégration avec TypeScript et son écosystème mature.
+- **Prisma** : Utilisé pour sa facilité d'interaction avec MongoDB, ses migrations automatisées et ses capacités de validation des données.
+- **MongoDB** : Choisi pour sa flexibilité et sa capacité de stockage de données non structurées, adapté aux besoins d'une API évolutive.
 
-## License
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+## Licence
+
+Ce projet utilise la licence [MIT](https://opensource.org/licenses/MIT).
